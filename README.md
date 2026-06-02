@@ -1,5 +1,4 @@
 graph TD
-    %% Estilos de Cores para Status do Jira
     classDef inicial fill:#7F8C8D,stroke:#333,stroke-width:2px,color:#fff;
     classDef todo fill:#2980B9,stroke:#1F618D,stroke-width:1px,color:#fff;
     classDef inprogress fill:#F39C12,stroke:#B9770E,stroke-width:1px,color:#fff;
@@ -7,7 +6,6 @@ graph TD
     classDef bug fill:#E74C3C,stroke:#C0392B,stroke-width:1px,color:#fff;
     classDef concluido fill:#2ECC71,stroke:#1D8348,stroke-width:2px,color:#fff;
 
-    %% Fluxo Principal (Ciclo do Projeto com Status Técnicos)
     Start([Item Criado no Backlog]) --> Passo1[TO DO: Escrita de User Stories & Critérios de Aceite]
     Passo1 --> Passo2[IN PROGRESS: Planejamento da Sprint no Jira]
     Passo2 --> Passo3[READY FOR QA: Modelagem de Testes no Zephyr]
@@ -19,11 +17,9 @@ graph TD
 
     CT_Manual & CT_BDD --> Execucao{IN TEST: Execução dos Testes}
 
-    %% Condicional de Sucesso ou Bug
     Execucao -- Teste Passou --> Evidencia[DONE: Anexar Evidências e Fechar Item]
     Execucao -- Teste Falhou --> NewBug[NEW: Bug Identificado]
 
-    %% Sub-fluxo: Ciclo de Vida do Bug (Status Técnicos)
     subgraph Ciclo_de_Vida_do_Bug [Fluxo de Tratamento de Defeitos]
         NewBug --> Assigned[ASSIGNED: Atribuído ao Dev]
         Assigned --> OpenBug[OPEN: Em Correção pelo Dev]
@@ -41,12 +37,10 @@ graph TD
         Verified --> ClosedBug
     end
 
-    %% Finalização
     Evidencia --> PDF_Export[Passo 4: Exportação de Relatórios em PDF]
     ClosedBug --> PDF_Export
     PDF_Export --> End([Fim: Entrega do Repositório no GitHub])
 
-    %% Aplicação de Classes aos Elementos
     class Start,End inicial;
     class Passo1,ReOpened todo;
     class Passo2,OpenBug,Assigned,Fixed inprogress;
