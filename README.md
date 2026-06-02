@@ -1,18 +1,10 @@
 graph TD
-    classDef inicio fill:#F39C12,stroke:#333,stroke-width:2px,color:#fff;
-    classDef processo fill:#3498DB,stroke:#2980B9,stroke-width:1px,color:#fff;
-    classDef decisao fill:#F1C40F,stroke:#D68910,stroke-width:1px,color:#333;
-    classDef bug fill:#E74C3C,stroke:#C0392B,stroke-width:2px,color:#fff;
-    classDef sucesso fill:#2ECC71,stroke:#27AE60,stroke-width:2px,color:#fff;
-
     Start([Item Criado no Backlog]) --> Passo1[TO DO: Escrita de User Stories & Critérios de Aceite]
     Passo1 --> Passo2[IN PROGRESS: Planejamento da Sprint no Jira]
     Passo2 --> Passo3[READY FOR QA: Modelagem de Testes no Zephyr]
     
-    subgraph Zephyr_Design [Abordagens de Teste Criadas]
-        Passo3 --> CT_Manual[Testes Passo a Passo]
-        Passo3 --> CT_BDD[Testes em Gherkin / BDD]
-    end
+    Passo3 --> CT_Manual[Testes Passo a Passo]
+    Passo3 --> CT_BDD[Testes em Gherkin / BDD]
 
     CT_Manual --> Execucao{IN TEST: Execução dos Testes}
     CT_BDD --> Execucao
@@ -38,9 +30,3 @@ graph TD
     Evidencia --> PDF_Export[Passo 4: Exportação de Relatórios em PDF]
     ClosedBug --> PDF_Export
     PDF_Export --> End([Fim: Entrega do Repositório no GitHub])
-
-    class Start,End inicio;
-    class Passo1,ReOpened,NewBug,ClosedBug bug;
-    class Passo2,OpenBug,Assigned,Fixed processo;
-    class Passo3,CT_Manual,CT_BDD,PendingRetest,Verified sucesso;
-    class Execucao,ReTest decisao;
