@@ -1,10 +1,10 @@
-graph TD
-    classDef inicial fill:#7F8C8D,stroke:#333,stroke-width:2px,color:#fff;
-    classDef todo fill:#2980B9,stroke:#1F618D,stroke-width:1px,color:#fff;
-    classDef inprogress fill:#F39C12,stroke:#B9770E,stroke-width:1px,color:#fff;
-    classDef qa fill:#9B59B6,stroke:#6C3483,stroke-width:1px,color:#fff;
-    classDef bug fill:#E74C3C,stroke:#C0392B,stroke-width:1px,color:#fff;
-    classDef concluido fill:#2ECC71,stroke:#1D8348,stroke-width:2px,color:#fff;
+```mermaid
+graph TD %% Estilos de Cores
+    classDef inicio e fim fill:#F39C12,stroke:#333,stroke-width:2px,color:#fff;
+    classDef processo fill:#3498DB,stroke:#2980B9,stroke-width:1px,color:#fff;
+    classDef decisao fill:#F1C40F,stroke:#D68910,stroke-width:1px,color:#333;
+    classDef bug fill:#E74C3C,stroke:#C0392B,stroke-width:2px,color:#fff;
+    classDef sucesso fill:#2ECC71,stroke:#27AE60,stroke-width:2px,color:#fff;
 
     Start([Item Criado no Backlog]) --> Passo1[TO DO: Escrita de User Stories & Critérios de Aceite]
     Passo1 --> Passo2[IN PROGRESS: Planejamento da Sprint no Jira]
@@ -41,9 +41,8 @@ graph TD
     ClosedBug --> PDF_Export
     PDF_Export --> End([Fim: Entrega do Repositório no GitHub])
 
-    class Start,End inicial;
-    class Passo1,ReOpened todo;
-    class Passo2,OpenBug,Assigned,Fixed inprogress;
-    class Passo3,CT_Manual,CT_BDD,Execucao,PendingRetest,ReTest,Verified qa;
-    class NewBug bug;
-    class Evidencia,PDF_Export,ClosedBug concluido;
+    class Start,End inicio;
+    class Passo1,ReOpened,NewBug,ClosedBug bug;
+    class Passo2,OpenBug,Assigned,Fixed processo;
+    class Passo3,CT_Manual,CT_BDD,PendingRetest,Verified sucesso;
+    class Execucao,ReTest decisao;
