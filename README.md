@@ -1,6 +1,5 @@
-```mermaid
-graph TD %% Estilos de Cores
-    classDef inicio e fim fill:#F39C12,stroke:#333,stroke-width:2px,color:#fff;
+graph TD
+    classDef inicio fill:#F39C12,stroke:#333,stroke-width:2px,color:#fff;
     classDef processo fill:#3498DB,stroke:#2980B9,stroke-width:1px,color:#fff;
     classDef decisao fill:#F1C40F,stroke:#D68910,stroke-width:1px,color:#333;
     classDef bug fill:#E74C3C,stroke:#C0392B,stroke-width:2px,color:#fff;
@@ -15,7 +14,8 @@ graph TD %% Estilos de Cores
         Passo3 --> CT_BDD[Testes em Gherkin / BDD]
     end
 
-    CT_Manual & CT_BDD --> Execucao{IN TEST: Execução dos Testes}
+    CT_Manual --> Execucao{IN TEST: Execução dos Testes}
+    CT_BDD --> Execucao
 
     Execucao -- Teste Passou --> Evidencia[DONE: Anexar Evidências e Fechar Item]
     Execucao -- Teste Falhou --> NewBug[NEW: Bug Identificado]
@@ -23,8 +23,6 @@ graph TD %% Estilos de Cores
     subgraph Ciclo_de_Vida_do_Bug [Fluxo de Tratamento de Defeitos]
         NewBug --> Assigned[ASSIGNED: Atribuído ao Dev]
         Assigned --> OpenBug[OPEN: Em Correção pelo Dev]
-        
-        OpenBug -- Invalido / Duplicado --> ClosedBug[CLOSED: Bug Fechado]
         
         OpenBug --> Fixed[FIXED: Correção do Código Concluída]
         Fixed --> PendingRetest[PENDING RETEST: Aguardando Re-teste]
@@ -34,7 +32,7 @@ graph TD %% Estilos de Cores
         ReOpened --> OpenBug
         
         ReTest -- Correção Validada --> Verified[VERIFIED: Correção Verificada]
-        Verified --> ClosedBug
+        Verified --> ClosedBug[CLOSED: Bug Fechado]
     end
 
     Evidencia --> PDF_Export[Passo 4: Exportação de Relatórios em PDF]
