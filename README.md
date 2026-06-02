@@ -67,12 +67,26 @@ graph TD
     CT_Manual & CT_BDD --> Execucao{Execução dos Testes}
 
     %% Condicional de Sucesso ou Bug
-    Execucao -- Teste Passou (Pass) --> Evidencia[Anexar Evidências e Fechar CT]
-    Execucao -- Teste Falhou (Fail) --> CicloBug
+    Execucao -- Teste Passou --> Evidencia[Anexar Evidências e Fechar CT]
+    Execucao -- Teste Falhou --> CicloBug
 
     %% Sub-fluxo: Ciclo de Vida do Bug
     subgraph CicloBug [Fluxo de Gerenciamento de Defeitos]
-        B1[1. Identificar Falha] --> B2[2. Abrir Card de Bug no Jira]
-        B2 --> B3[3. Priorizar e Atribuir ao Desenvolvedor]
-        B3 --> B4[4. Correção do Código pelo Dev]
-        B4 --> B5{5.
+        B1[Identificar Falha] --> B2[Abrir Card de Bug no Jira]
+        B2 --> B3[Priorizar e Atribuir ao Desenvolvedor]
+        B3 --> B4[Correção do Código pelo Dev]
+        B4 --> B5{Re-teste pelo QA}
+        B5 -- Falha persiste --> B4
+        B5 -- Corrigido com sucesso --> B6[Fechar Bug - Closed]
+    end
+
+    %% Finalização
+    Evidencia --> PDF_Export[Passo 4: Exportação de Relatórios em PDF]
+    B6 --> PDF_Export
+    PDF_Export --> End([Fim: Entrega do Repositório no GitHub])
+
+    %% Aplicação de Estilos
+    class Start,End inicio;
+    class Passo1,Passo2,Passo3,CT_Manual,CT_BDD,Evidencia,PDF_Export,B1,B3,B4,B6 processo;
+    class Execucao,B5 decisao;
+    class B2,CicloBug bug;
