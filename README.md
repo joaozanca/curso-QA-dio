@@ -16,7 +16,7 @@ Desafio de projeto focado no mapeamento de requisitos, garantia de qualidade (QA
 
 Os documentos oficiais gerados durante as etapas do desafio estão organizados na pasta raiz deste repositório:
 
-* 📄 **`documentacao-de-requisitos-dio.pdf`**: Contém o mapeamento completo das User Stories, regras de negócio e critérios de aceite estruturados no Confluence.
+* 📄 **`user-stories.pdf`**: Contém o mapeamento completo das User Stories, regras de negócio e critérios de aceite estruturados no Confluence.
 * 📄 **`plano-de-testes-zephyr.pdf`**: Relatório contendo todos os Casos de Teste detalhados, cobrindo os formatos *Step-by-Step* (Passo a Passo) e cenários escritos em *BDD (Gherkin)*.
 * 📸 **`print_quadro_sprint_jira.png`**: Captura de tela do quadro da Sprint Ativa no Jira, demonstrando o fluxo de trabalho dos cards.
 
