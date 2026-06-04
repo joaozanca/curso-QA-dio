@@ -82,3 +82,7 @@ graph TD
     Evidencia --> Deploy[Deploy em Produção:<br>Liberação da Feature]
     ClosedBug --> Deploy
     Deploy --> End([Fim: Funcionalidade Online<br>& Monitorada])
+```
+
+## 💻 Autor
+👋 Desenvolvido por **Jõao Vitor Zanca** durante o Desafio de Gerenciamento de Testes em Telemedicina.
