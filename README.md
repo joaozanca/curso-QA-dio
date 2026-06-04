@@ -30,6 +30,12 @@ graph TD
         Verified --> ClosedBug[CLOSED: Bug Fechado]
     end
 
-    Evidencia --> PDF_Export[Passo 4: Exportação de Relatórios em PDF]
+    Evidencia --> PDF_Export[Passo 4: Exportação de<br>Relatórios em PDF]
     ClosedBug --> PDF_Export
-    PDF_Export --> End([Fim: Entrega do Repositório no GitHub])
+    PDF_Export --> End([Fim: Entrega do<br>Repositório no GitHub])
+
+    class Start,End inicio;
+    class Passo1,ReOpened,NewBug,ClosedBug bug;
+    class Passo2,OpenBug,Assigned,Fixed processo;
+    class Passo3,CT_Manual,CT_BDD,PendingRetest,Verified sucesso;
+    class Execucao,ReTest decisao;
