@@ -1,3 +1,4 @@
+```mermaid
 graph TD
     Start([Item Criado no Backlog]) --> Passo1[TO DO: Escrita de User Stories & Critérios de Aceite]
     Passo1 --> Passo2[IN PROGRESS: Planejamento da Sprint no Jira]
@@ -18,8 +19,6 @@ graph TD
         NewBug --> Assigned[ASSIGNED: Atribuído ao Dev]
         Assigned --> OpenBug[OPEN: Em Correção pelo Dev]
         
-        OpenBug -- Invalido / Duplicado --> ClosedBug[CLOSED: Bug Fechado]
-        
         OpenBug --> Fixed[FIXED: Correção do Código Concluída]
         Fixed --> PendingRetest[PENDING RETEST: Aguardando Re-teste]
         PendingRetest --> ReTest{RE-TEST: Executando Reteste}
@@ -28,7 +27,7 @@ graph TD
         ReOpened --> OpenBug
         
         ReTest -- Correção Validada --> Verified[VERIFIED: Correção Verificada]
-        Verified --> ClosedBug
+        Verified --> ClosedBug[CLOSED: Bug Fechado]
     end
 
     Evidencia --> PDF_Export[Passo 4: Exportação de Relatórios em PDF]
