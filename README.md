@@ -1,32 +1,36 @@
 graph TD
-    Start([Item Criado no Backlog]) --> ToDo[TO DO / A FAZER]
+    Start([Item Criado no Backlog]) --> Passo1[TO DO: Escrita de User Stories & Critérios de Aceite]
+    Passo1 --> Passo2[IN PROGRESS: Planejamento da Sprint no Jira]
+    Passo2 --> Passo3[READY FOR QA: Modelagem de Testes no Zephyr]
     
-    ToDo --> InProgress[IN PROGRESS / EM DESENVOLVIMENTO]
-    
-    InProgress -- Impedimento Identificado --> Blocked[BLOCKED / BLOQUEADO]
-    Blocked -- Impedimento Resolvido --> InProgress
-    
-    InProgress --> ReadyQA[READY FOR QA / PRONTO PARA TESTE]
-    ReadyQA --> InTest{IN TEST / EM TESTE}
+    subgraph Zephyr_Design [Abordagens de Teste Criadas]
+        Passo3 --> CT_Manual[Testes Passo a Passo]
+        Passo3 --> CT_BDD[Testes em Gherkin / BDD]
+    end
 
-    InTest -- Teste Passou --> Done[DONE / CONCLUÍDO]
-    InTest -- Defeito Encontrado --> NewBug[NEW / BUG IDENTIFICADO]
+    CT_Manual --> Execucao{IN TEST: Execução dos Testes}
+    CT_BDD --> Execucao
+
+    Execucao -- Teste Passou --> Evidencia[DONE: Anexar Evidências e Fechar Item]
+    Execucao -- Teste Falhou --> NewBug[NEW: Bug Identificado]
 
     subgraph Ciclo_de_Vida_do_Bug [Fluxo de Tratamento de Defeitos]
-        NewBug --> Assigned[ASSIGNED / ATRIBUÍDO AO DEV]
-        Assigned --> OpenBug[OPEN / EM CORREÇÃO]
+        NewBug --> Assigned[ASSIGNED: Atribuído ao Dev]
+        Assigned --> OpenBug[OPEN: Em Correção pelo Dev]
         
-        OpenBug -- Invalido / Duplicado --> ClosedBug[CLOSED / FECHADO]
+        OpenBug -- Invalido / Duplicado --> ClosedBug[CLOSED: Bug Fechado]
         
-        OpenBug --> Fixed[FIXED / CORRIGIDO]
-        Fixed --> PendingRetest[PENDING RETEST / AGUARDANDO RE-TESTE]
-        PendingRetest --> ReTest{RE-TEST / EXECUTANDO RETESTE}
+        OpenBug --> Fixed[FIXED: Correção do Código Concluída]
+        Fixed --> PendingRetest[PENDING RETEST: Aguardando Re-teste]
+        PendingRetest --> ReTest{RE-TEST: Executando Reteste}
         
-        ReTest -- Falha Persiste --> ReOpened[REOPENED / REABERTO]
+        ReTest -- Falha Persiste --> ReOpened[REOPENED: Bug Reaberto]
         ReOpened --> OpenBug
         
-        ReTest -- Correção Validada --> Verified[VERIFIED / VERIFICADO]
+        ReTest -- Correção Validada --> Verified[VERIFIED: Correção Verificada]
         Verified --> ClosedBug
     end
 
-    ClosedBug --> ToDo
+    Evidencia --> PDF_Export[Passo 4: Exportação de Relatórios em PDF]
+    ClosedBug --> PDF_Export
+    PDF_Export --> End([Fim: Entrega do Repositório no GitHub])
