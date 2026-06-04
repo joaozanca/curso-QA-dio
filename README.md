@@ -32,6 +32,6 @@ graph TD
         Verified --> ClosedBug
     end
 
-    Evidencia --> PDF_Export[Passo 4: Exportação de<br>Relatórios em PDF]
-    ClosedBug --> PDF_Export
-    PDF_Export --> End([Fim: Entrega do<br>Repositório no GitHub])
+    Evidencia --> Deploy[Deploy em Produção:<br>Liberação da Feature]
+    ClosedBug --> Deploy
+    Deploy --> End([Fim: Funcionalidade Online<br>& Monitorada])
