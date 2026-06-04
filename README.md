@@ -35,6 +35,4 @@ graph TD
     Evidencia --> PDF_Export[Passo 4: Exportação de<br>Relatórios em PDF]
     ClosedBug --> PDF_Export
     PDF_Export --> End([Fim: Entrega do<br>Repositório no GitHub])
-
-💻 Autor
-👋 Desenvolvido por joaozanca durante a Formação de Automação de Testes.
+    
