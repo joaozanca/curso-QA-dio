@@ -1,6 +1,6 @@
 ```mermaid
 graph TD
-    Start([Item Criado no Backlog]) --> Passo1[TO DO:<br>Escrita de User Stories & Critérios de Aceite]
+    Start([Item Criado no Backlog]) --> Passo1[TO DO:<br>Escrita de User Stories &<br>Critérios de Aceite]
     Passo1 --> Passo2[IN PROGRESS:<br>Planejamento da Sprint no Jira]
     Passo2 --> Passo3[READY FOR QA:<br>Modelagem de Testes no Zephyr]
     
@@ -35,4 +35,3 @@ graph TD
     Evidencia --> PDF_Export[Passo 4: Exportação de<br>Relatórios em PDF]
     ClosedBug --> PDF_Export
     PDF_Export --> End([Fim: Entrega do<br>Repositório no GitHub])
-    
