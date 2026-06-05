@@ -49,7 +49,7 @@ O diagrama abaixo mapeia a esteira técnica de estados de uma tarefa dentro de u
 graph TD
     Start([Item Criado no Backlog]) --> Passo1[TO DO:<br>Escrita de User Stories &<br>Critérios de Aceite]
     Passo1 --> Passo2[IN PROGRESS:<br>Planejamento da Sprint no Jira]
-    Passo2 --> Passo3[READY FOR QA:<br>Modelagem de Testes no Zephyr<br>Testes Passo a Passo &<br>Testes em Gherkin / BDD]
+    Passo2 --> Passo3[READY FOR QA:<br>Modelagem de Testes no Zephyr<br>]
     
     Passo3 --> Execucao{IN TEST:<br>Execução dos Testes}
 
