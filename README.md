@@ -49,15 +49,9 @@ O diagrama abaixo mapeia a esteira técnica de estados de uma tarefa dentro de u
 graph TD
     Start([Item Criado no Backlog]) --> Passo1[TO DO:<br>Escrita de User Stories &<br>Critérios de Aceite]
     Passo1 --> Passo2[IN PROGRESS:<br>Planejamento da Sprint no Jira]
-    Passo2 --> Passo3[READY FOR QA:<br>Modelagem de Testes no Zephyr]
+    Passo2 --> Passo3[READY FOR QA:<br>Modelagem de Testes no Zephyr<br>Testes Passo a Passo &<br>Testes em Gherkin / BDD]
     
-    subgraph Zephyr_Design [Abordagens de Teste Criadas]
-        Passo3 --> CT_Manual[Testes Passo a Passo]
-        Passo3 --> CT_BDD[Testes em Gherkin / BDD]
-    end
-
-    CT_Manual --> Execucao{IN TEST:<br>Execução dos Testes}
-    CT_BDD --> Execucao
+    Passo3 --> Execucao{IN TEST:<br>Execução dos Testes}
 
     Execucao -- Teste Passou --> Evidencia[DONE:<br>Anexar Evidências e Fechar Item]
     Execucao -- Teste Falhou --> NewBug[NEW:<br>Bug Identificado]
