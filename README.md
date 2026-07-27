@@ -79,4 +79,4 @@ graph TD
 ```
 
 ## 💻 Autor
-👋 Desenvolvido por **Jõao Vitor Zanca** durante o Desafio de Gerenciamento de Testes em Telemedicina.
+👋 Desenvolvido por **João Vitor Zanca** durante o Desafio de Gerenciamento de Testes em Telemedicina.
